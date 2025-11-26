@@ -2,226 +2,142 @@
 <html lang="de">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Test-Website — Demo</title>
-  <meta name="description" content="Ein einfaches Test-HTML-Template für Entwicklung und Demo-Zwecke." />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ferienwohnung Nordsee – Willkommen</title>
   <style>
-    /* Einfaches, modernes Styling (keine externen Abhängigkeiten) */
     :root{
-      --bg:#0f1724; /* dunkel */
-      --card:#0b1220;
-      --accent:#06b6d4;
-      --muted:#9aa4b2;
-      --radius:12px;
-      --glass: rgba(255,255,255,0.04);
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      --bg:#f7fafc;
+      --text:#1a202c;
+      --accent:#0ea5e9;
+      --muted:#4a5568;
+      --radius:14px;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto;
     }
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0;
-      background:linear-gradient(180deg,var(--bg),#071027 80%);
-      color:#e6eef6;
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
-      line-height:1.4;
-      padding:24px;
-    }
+    body{margin:0;background:var(--bg);color:var(--text);line-height:1.5}
+    header{padding:24px;position:sticky;top:0;background:white;box-shadow:0 2px 6px rgba(0,0,0,0.05);z-index:10}
+    header .nav{display:flex;justify-content:space-between;align-items:center;max-width:1100px;margin:0 auto}
+    header a{margin-left:18px;text-decoration:none;color:var(--muted)}
+    header a:hover{color:var(--accent)}
 
-    /* Layout */
-    .container{max-width:1100px;margin:0 auto}
-    header{display:flex;align-items:center;justify-content:space-between;margin-bottom:28px}
-    .brand{display:flex;align-items:center;gap:12px}
-    .logo{width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,var(--accent),#7c3aed);display:flex;align-items:center;justify-content:center;font-weight:700;color:#021627}
-    nav a{color:var(--muted);text-decoration:none;margin-left:18px}
-    nav a:hover{color:var(--accent)}
+    .hero{padding:80px 20px;text-align:center;background:url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=60') center/cover no-repeat;color:white}
+    .hero h1{font-size:48px;margin:0}
+    .hero p{max-width:600px;margin:12px auto 0;font-size:18px}
 
-    /* Hero */
-    .hero{display:grid;grid-template-columns:1fr 380px;gap:28px;align-items:center;margin-bottom:32px}
-    .card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border-radius:var(--radius);padding:28px;box-shadow:0 6px 18px rgba(2,6,23,0.6);}
-    h1{margin:0 0 12px;font-size:28px}
-    p.lead{color:var(--muted);margin:0 0 18px}
-    .cta{display:inline-block;padding:10px 16px;border-radius:10px;background:var(--accent);color:#042434;text-decoration:none;font-weight:600}
+    .section{padding:60px 20px;max-width:1100px;margin:0 auto}
+    h2{margin-top:0;font-size:28px}
 
-    /* Features */
-    .features{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-bottom:28px}
-    .feature{padding:18px;border-radius:12px;background:var(--card);}
-    .feature h3{margin:0 0 8px;font-size:16px}
-    .feature p{margin:0;color:var(--muted);font-size:14px}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px}
+    .card{background:white;border-radius:var(--radius);padding:20px;box-shadow:0 2px 8px rgba(0,0,0,0.06)}
 
-    /* Footer */
-    footer{margin-top:36px;color:var(--muted);font-size:14px;display:flex;justify-content:space-between;align-items:center}
+    footer{padding:28px;text-align:center;color:var(--muted)}
 
-    /* Responsive */
-    @media (max-width:900px){
-      .hero{grid-template-columns:1fr;}
-      nav a{margin-left:12px}
-    }
+    .cta{display:inline-block;margin-top:16px;padding:12px 20px;background:var(--accent);color:white;border-radius:10px;text-decoration:none;font-weight:600}
+    .cta:hover{opacity:0.9}
 
-    /* kleine Formularelemente */
-    input,textarea{width:100%;padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:inherit}
-    label{font-size:13px;color:var(--muted);display:block;margin-bottom:6px}
-    .muted{color:var(--muted)}
+    /* Galerie */
+    .gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-top:20px}
+    .gallery img{width:100%;border-radius:10px;object-fit:cover;height:160px}
+
+    /* Kontaktformular */
+    form{display:grid;gap:12px;margin-top:20px}
+    input,textarea{width:100%;padding:10px;border-radius:8px;border:1px solid #ccc;font-size:15px}
+    button{padding:12px 16px;border:0;background:var(--accent);color:white;border-radius:8px;font-size:16px;cursor:pointer}
+    button:hover{opacity:0.9}
   </style>
 </head>
 <body>
-  <div class="container">
-    <header>
-      <div class="brand">
-        <div class="logo">T</div>
-        <div>
-          <div style="font-weight:700">TestSite</div>
-          <div style="font-size:12px;color:var(--muted)">Ein kleines HTML-Demo</div>
-        </div>
-      </div>
-      <nav>
-        <a href="#features">Features</a>
-        <a href="#demo">Demo</a>
-        <a href="#kontakt">Kontakt</a>
-      </nav>
-    </header>
 
-    <main>
-      <section class="hero">
-        <div class="card" id="intro">
-          <h1>Modernes Test-HTML Template</h1>
-          <p class="lead">Schnelles, sauberes Start-Template zum Testen von Layouts, Formularen und kleinen Interaktionen — komplett ohne Bibliotheken.</p>
-          <a class="cta" href="#demo" id="open-demo">Demo starten</a>
-
-          <hr style="margin:18px 0;border:none;border-top:1px solid rgba(255,255,255,0.03)">
-
-          <div style="display:flex;gap:12px;flex-wrap:wrap">
-            <div class="muted">Version: 1.0</div>
-            <div class="muted">Erstellt: November 2025</div>
-          </div>
-        </div>
-
-        <aside class="card" aria-label="Quick info">
-          <h3 style="margin-top:0">Kurzinfo</h3>
-          <p class="muted" style="margin-bottom:12px">Diese Seite zeigt ein flexibles Grid, einfache UI-Elemente und eine kleine JS-Demo weiter unten.</p>
-          <div style="font-size:13px">
-            <strong>Funktionen</strong>
-            <ul style="padding-left:18px;margin:8px 0;color:var(--muted)">
-              <li>Responsive Layout</li>
-              <li>Formular mit Validierung</li>
-              <li>Interaktive Karte (Platzhalter)</li>
-            </ul>
-          </div>
-        </aside>
-      </section>
-
-      <section id="features">
-        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
-          <h2 style="margin:0">Features</h2>
-          <div class="muted">Grid & Komponenten</div>
-        </div>
-        <div class="features">
-          <div class="feature">
-            <h3>Responsives Grid</h3>
-            <p>Skalierbares Grid mit CSS-Grid und Fallback für schmale Bildschirme.</p>
-          </div>
-          <div class="feature">
-            <h3>Formular</h3>
-            <p>Ein Kontaktformular mit einfacher Validierung per JavaScript.</p>
-          </div>
-          <div class="feature">
-            <h3>Leichtgewichtig</h3>
-            <p>Keine externen Libraries — ideal für Tests und Prototyping.</p>
-          </div>
-          <div class="feature">
-            <h3>Dark-First Design</h3>
-            <p>Ansprechende dunkle Farbpalette, die auf helle Themes erweitert werden kann.</p>
-          </div>
-        </div>
-      </section>
-
-      <section id="demo" style="margin-top:18px">
-        <div class="card">
-          <h2 style="margin-top:0">Demo: Kontaktformular</h2>
-          <form id="contactForm" novalidate>
-            <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
-              <div>
-                <label for="name">Name</label>
-                <input id="name" name="name" type="text" placeholder="Dein Name" required />
-              </div>
-              <div>
-                <label for="email">E‑Mail</label>
-                <input id="email" name="email" type="email" placeholder="name@example.com" required />
-              </div>
-            </div>
-            <div style="margin-top:12px">
-              <label for="message">Nachricht</label>
-              <textarea id="message" name="message" rows="5" placeholder="Schreibe etwas..." required></textarea>
-            </div>
-            <div style="margin-top:12px;display:flex;gap:12px;align-items:center">
-              <button type="submit" class="cta">Absenden</button>
-              <div id="formStatus" class="muted">Keine Nachrichten gesendet.</div>
-            </div>
-          </form>
-        </div>
-      </section>
-
-      <section id="kontakt" style="margin-top:18px">
-        <div class="card">
-          <h2 style="margin-top:0">Kontakt</h2>
-          <p class="muted">Oder teste die Demo-Funktionen — es passiert nichts auf dem Server, alles läuft lokal.</p>
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px">
-            <div>
-              <label>Ort</label>
-              <input placeholder="Berlin" />
-            </div>
-            <div>
-              <label>Interesse</label>
-              <input placeholder="Design / Dev" />
-            </div>
-          </div>
-        </div>
-      </section>
-
-    </main>
-
-    <footer>
-      <div>© TestSite — <span class="muted">Nur Demo</span></div>
-      <div class="muted">Built with HTML & plain JS</div>
-    </footer>
+<header>
+  <div class="nav">
+    <div style="font-weight:700;font-size:20px">Ferienwohnung Nordsee</div>
+    <nav>
+      <a href="#wohnung">Wohnung</a>
+      <a href="#galerie">Galerie</a>
+      <a href="#umgebung">Umgebung</a>
+      <a href="#kontakt">Kontakt</a>
+    </nav>
   </div>
+</header>
 
-  <script>
-    // Kleine JS-Demo: Formular-Validierung + Statusmeldung
-    (function(){
-      const form = document.getElementById('contactForm');
-      const status = document.getElementById('formStatus');
-      const openDemo = document.getElementById('open-demo');
+<section class="hero">
+  <h1>Willkommen an der Nordsee</h1>
+  <p>Genieße erholsame Tage in unserer gemütlichen Ferienwohnung – nur wenige Minuten vom Strand entfernt.</p>
+  <!-- <a href="#kontakt" class="cta">Jetzt anfragen</a> -->
+</section>
 
-      form.addEventListener('submit', function(e){
-        e.preventDefault();
-        const name = form.name.value.trim();
-        const email = form.email.value.trim();
-        const msg = form.message.value.trim();
+<section id="wohnung" class="section">
+  <h2>Über die Ferienwohnung</h2>
+  <p>Unsere modern eingerichtete Ferienwohnung bietet Platz für bis zu 4 Personen. Perfekt für Paare, Familien oder kleine Gruppen. Die Wohnung liegt ruhig, aber dennoch nah am Meer.</p>
 
-        // Sehr einfache Validierung
-        if(!name || !email || !msg){
-          status.textContent = 'Bitte alle Felder ausfüllen.';
-          status.style.color = '#ffbaba';
-          return;
-        }
+  <div class="grid" style="margin-top:20px">
+    <div class="card">
+      <h3>Ausstattung</h3>
+      <ul>
+        <li>2 Schlafzimmer</li>
+        <li>Voll ausgestattete Küche</li>
+        <li>Balkon mit Meerluft</li>
+        <li>Smart-TV & WLAN</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Highlights</h3>
+      <ul>
+        <li>Nah am Strand</li>
+        <li>Frisch renoviert</li>
+        <li>Parkplatz direkt am Haus</li>
+      </ul>
+    </div>
+  </div>
+</section>
 
-        // Simuliere Senden
-        status.textContent = 'Sende Nachricht...';
-        status.style.color = '';
+<section id="galerie" class="section">
+  <h2>Galerie</h2>
+  <p>Ein kleiner Einblick in unsere Ferienwohnung und die Umgebung.</p>
 
-        setTimeout(()=>{
-          status.textContent = 'Nachricht gesendet — Danke! (Nur Demo)';
-          form.reset();
-        }, 800);
-      });
+  <div class="gallery">
+    <img src="https://images.unsplash.com/photo-1507089947368-19c1da9775ae?auto=format&fit=crop&w=800&q=60" alt="Wohnzimmer" />
+    <img src="https://images.unsplash.com/photo-1505693314120-0d443867891c?auto=format&fit=crop&w=800&q=60" alt="Schlafzimmer" />
+    <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=800&q=60" alt="Küche" />
+    <img src="https://images.unsplash.com/photo-1493558103817-58b2924bce98?auto=format&fit=crop&w=800&q=60" alt="Strand" />
+  </div>
+</section>
 
-      // Smooth scroll für Demo-Link
-      openDemo.addEventListener('click', function(e){
-        e.preventDefault();
-        document.querySelector('#demo').scrollIntoView({behavior:'smooth'});
-      });
-    })();
-  </script>
+<section id="umgebung" class="section">
+  <h2>Umgebung</h2>
+  <p>Erkunde die Weite der Nordseeküste, genieße frische Luft und besuche charmante Küstenorte in unmittelbarer Nähe.</p>
+
+  <div class="grid" style="margin-top:20px">
+    <div class="card">
+      <h3>Strand</h3>
+      <p>Nur wenige Gehminuten entfernt – ideal zum Sonnen, Spazieren und Entspannen.</p>
+    </div>
+    <div class="card">
+      <h3>Ortszentrum</h3>
+      <p>Nette Cafés, Restaurants und kleine Läden laden zum Bummeln ein.</p>
+    </div>
+    <div class="card">
+      <h3>Aktivitäten</h3>
+      <p>Fahrradtouren, Wattwanderungen und Bootsausflüge sind nur einige der vielen Möglichkeiten.</p>
+    </div>
+  </div>
+</section>
+
+<!-- <section id="kontakt" class="section">
+  <h2>Kontakt & Buchung</h2>
+  <p>Schreib uns für Verfügbarkeiten, Preise oder Fragen – wir freuen uns auf deine Nachricht.</p>
+
+  <form>
+    <input type="text" placeholder="Name" required />
+    <input type="email" placeholder="E-Mail" required />
+    <textarea rows="5" placeholder="Nachricht"></textarea>
+    <button type="submit">Nachricht senden</button>
+  </form>
+</section> 
+  -->
+
+<footer>
+  © 2025 Ferienwohnung Nordsee – Alle Rechte vorbehalten
+</footer>
+
 </body>
 </html>
